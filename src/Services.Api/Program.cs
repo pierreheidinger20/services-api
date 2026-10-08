@@ -31,20 +31,20 @@ var app = builder.Build();
 
 app.UseCors("AllowFrontend");
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+// using (var scope = app.Services.CreateScope())
+// {
+//     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-    // Genera el SQL que EF Core utilizaría para crear el esquema
-    var sql = db.Database.GenerateCreateScript();
+//     // Genera el SQL que EF Core utilizaría para crear el esquema
+//     var sql = db.Database.GenerateCreateScript();
 
-    Console.WriteLine("========== CREATE SCRIPT ==========");
-    Console.WriteLine(sql);
-    Console.WriteLine("===================================");
+//     Console.WriteLine("========== CREATE SCRIPT ==========");
+//     Console.WriteLine(sql);
+//     Console.WriteLine("===================================");
 
-    // Crea la base/tablas si corresponde
-    db.Database.EnsureCreated();
-}
+//     // Crea la base/tablas si corresponde
+//     db.Database.EnsureCreated();
+// }
 app.UseExceptionHandler();
 if (app.Environment.IsDevelopment()) app.MapOpenApi();
 app.MapControllers();

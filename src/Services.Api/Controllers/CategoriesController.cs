@@ -10,6 +10,8 @@ public sealed class CategoriesController(GetCategoriesUseCase getCategories) : C
     [HttpGet]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
+        var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
+        Console.WriteLine($"Request from IP: {ip}");
         return Ok(await getCategories.ExecuteAsync(cancellationToken));
     }
 
