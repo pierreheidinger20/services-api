@@ -21,7 +21,10 @@ public sealed class RestaurantConfiguration : IEntityTypeConfiguration<Restauran
         builder.Property(r => r.ImageUrl).HasMaxLength(2048).IsRequired();
         builder.Property(r => r.Tag).HasMaxLength(100);
         builder.Property(r => r.CreatedAt).IsRequired();
+        builder.Property(x => x.Location).HasColumnName("location").HasColumnType("geography(Point,4326)");
+        builder.Property(x => x.DeliveryRadiusMeters).HasColumnName("deliveryradiusmeters").IsRequired();
         builder.HasMany(r => r.Categories).WithMany().UsingEntity(join => join.ToTable("restaurant_categories"));
         builder.HasMany(r => r.Menus).WithMany().UsingEntity(join => join.ToTable("restaurant_menus"));
+
     }
 }

@@ -1,4 +1,6 @@
+using NetTopologySuite.Geometries;
 using Services.Domain.Categories;
+using Services.Domain.ValueObject;
 
 namespace Services.Domain.Restaurants;
 
@@ -33,6 +35,10 @@ public sealed class Restaurant
     public DateTimeOffset CreatedAt { get; private set; }
     public DateTimeOffset? UpdatedAt { get; private set; }
 
+    public Point Location { get; private set; }
+
+    public int DeliveryRadiusMeters { get; private set; }
+
     public void AddCategory(Category category)
     {
         ArgumentNullException.ThrowIfNull(category);
@@ -64,4 +70,5 @@ public sealed class Restaurant
         if (!string.IsNullOrWhiteSpace(category)) restaurant.AddCategory(Category.Create(category));
         return restaurant;
     }
+
 }

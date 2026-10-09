@@ -1,3 +1,5 @@
+using Services.Domain.ValueObject;
+
 namespace Services.Domain.Restaurants;
 
 public interface IRestaurantRepository
@@ -5,4 +7,5 @@ public interface IRestaurantRepository
     Task<Restaurant?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     Task<IReadOnlyList<Restaurant>> GetAllAsync(CancellationToken cancellationToken);
     Task AddAsync(Restaurant restaurant, CancellationToken cancellationToken);
+    Task<IReadOnlyList<NearbyRestaurant>> GetNearbyAsync(Location location, CancellationToken cancellationToken);
 }

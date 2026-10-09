@@ -14,6 +14,7 @@ public static class DependencyInjection
         services.AddScoped<GetRestaurantUseCase>();
         services.AddScoped<GetRestaurantsUseCase>();
         services.AddScoped<GetCategoriesUseCase>();
+        services.AddScoped<GetRestaurantsNearbyUseCase>();
         return services;
     }
 }
